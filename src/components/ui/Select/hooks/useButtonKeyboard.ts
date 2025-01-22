@@ -8,15 +8,13 @@ interface Props {
 
 export const useButtonKeyboard = ({ onToggle }: Props) => {
   const handleKeyDown = useCallback(
-    (e: KeyboardEvent<HTMLButtonElement>) => {
-      const { key } = e;
-
+    (e: KeyboardEvent<HTMLButtonElement>) => {  
       const events = {
         [keys.ArrowDown]: onToggle,
         [keys.ArrowUp]: onToggle,
       };
 
-      (events as Record<string, () => void>)[key]?.();
+      (events as Record<string, () => void>)[e.code]?.();
     },
     [onToggle],
   );

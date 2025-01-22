@@ -4,4 +4,5 @@ export const keys = {
   Tab: 'Tab',
   Enter: 'Enter',
   Escape: 'Escape',
+  Space: 'Space',
 } as const;

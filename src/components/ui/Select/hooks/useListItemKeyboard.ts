@@ -10,7 +10,7 @@ interface Props {
 export const useListItemKeyboard = ({ onToggle, onSelect }: Props) => {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLLIElement>) => {
-      const { key, currentTarget } = e;
+      const { code, currentTarget } = e;
 
       const focusNext = () => {
         e.preventDefault();
@@ -25,15 +25,21 @@ export const useListItemKeyboard = ({ onToggle, onSelect }: Props) => {
         if (prevElement) prevElement.focus();
       };
 
+      const handleSelect = () => {
+        e.preventDefault();
+        onSelect();
+      };
+
       const events = {
         [keys.ArrowDown]: focusNext,
         [keys.ArrowUp]: focusPrevious,
         [keys.Tab]: onToggle,
         [keys.Escape]: onToggle,
-        [keys.Enter]: onSelect,
+        [keys.Enter]: handleSelect,
+        [keys.Space]: handleSelect,
       };
 
-      (events as Record<string, () => void>)[key]?.();
+      (events as Record<string, () => void>)[code]?.();
     },
     [onToggle, onSelect],
   );
