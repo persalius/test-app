@@ -24,6 +24,7 @@
 ```
 4. Додати всі необхідні пропси, такі як isLoading, isDisabled, isOpen, placeholder, className / classNames.
 5. Зробити можливим, щоб компонент був контрольованим. Наприклад для бібліотеки react-hook-form.
+6. Змінювати позицію списку, залежно від viewport.
 
 ## Використовувані технології:
 TanStack Query / Virtual, Next.js (для швидкості запуску проєкту), TaiwindCSS, Framer-Motion.
