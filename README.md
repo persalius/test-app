@@ -20,7 +20,7 @@
   <MyItem>Vanilla</MyItem>
 </MySelect>
 ```
-2. Додати всі необхідні пропси, такі як isLoading, isDisabled, isOpen, placeholder, className.
+2. Додати всі необхідні пропси, такі як isLoading, isDisabled, isOpen, placeholder, className / classNames.
 3. Зробити можливим, щоб компонент був контрольованим. Наприклад для бібліотеки react-hook-form.
 
 
