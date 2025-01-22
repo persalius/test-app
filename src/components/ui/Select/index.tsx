@@ -11,9 +11,10 @@ import { Option } from './types';
 interface Props {
   items: Option[];
   onChange?: (option: Option) => void;
+  isDisabled: boolean;
 }
 
-const Select: FC<Props> = ({ items, onChange }) => {
+const Select: FC<Props> = ({ items, onChange, isDisabled }) => {
   const contextvalue = useContextValue({ onChange });
   const buttonProps = useButton();
   const listBoxProps = useListBox();
@@ -33,7 +34,11 @@ const Select: FC<Props> = ({ items, onChange }) => {
   return (
     <SelectContext.Provider value={contextvalue}>
       <div>
-        <Button {...buttonProps} listBoxId={listBoxProps.id} />
+        <Button
+          {...buttonProps}
+          listBoxId={listBoxProps.id}
+          isDisabled={isDisabled}
+        />
         <Popover count={items.length} buttonElement={buttonProps.ref?.current}>
           {(virtualizeProps) => (
             <ListBox

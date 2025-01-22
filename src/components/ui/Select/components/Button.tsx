@@ -1,13 +1,15 @@
 import type { FC, RefObject } from 'react';
+import cn from '@/utils/cn';
 import { useButtonKeyboard, useSelectContext } from '../hooks';
 
 interface Props {
   id: string;
   listBoxId: string;
   ref: RefObject<HTMLButtonElement | null>;
+  isDisabled: boolean;
 }
 
-const Button: FC<Props> = ({ id, listBoxId, ref }) => {
+const Button: FC<Props> = ({ id, listBoxId, isDisabled, ref }) => {
   const { isOpen, onToggle, selectedItem } = useSelectContext();
   const { handleKeyDown } = useButtonKeyboard({ onToggle });
 
@@ -20,8 +22,17 @@ const Button: FC<Props> = ({ id, listBoxId, ref }) => {
       aria-haspopup='true'
       aria-expanded={isOpen}
       aria-controls={listBoxId}
+      disabled={isDisabled}
       onClick={onToggle}
-      className='flex h-9 w-48 items-center justify-between whitespace-nowrap rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background focus:outline-none focus:ring-1 disabled:cursor-not-allowed disabled:opacity-50'
+      className={cn(
+        'h-9 w-48',
+        'flex items-center justify-between',
+        'whitespace-nowrap',
+        'rounded-md border bg-transparent shadow-sm ring-offset-background',
+        'px-3 py-2',
+        'text-sm',
+        'focus:outline-none focus:ring-1 disabled:cursor-not-allowed disabled:opacity-50',
+      )}
     >
       {selectedItem?.name || 'Select...'}
       <svg

@@ -6,7 +6,7 @@ import Select from '@/components/ui/Select';
 import { Option } from '@/components/ui/Select/types';
 
 export default function Home() {
-  const { data } = useTestData();
+  const { data, isFetching } = useTestData();
 
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
@@ -16,7 +16,11 @@ export default function Home() {
 
   return (
     <div className='p-6'>
-      <Select items={data.results} onChange={handleChange} />
+      <Select
+        items={data.results}
+        onChange={handleChange}
+        isDisabled={isFetching}
+      />
 
       {selectedOption && (
         <div className='mt-6'>
