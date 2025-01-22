@@ -1,16 +1,14 @@
 import { FC, RefObject } from 'react';
-import { useButtonKeyboard } from '../hooks';
+import { useButtonKeyboard, useSelectContext } from '../hooks';
 
 interface Props {
   id: string;
   listBoxId: string;
   ref: RefObject<HTMLButtonElement | null>;
-  onToggle: () => void;
-  isOpen: boolean;
-  value: string;
 }
 
-const Button: FC<Props> = ({ id, listBoxId, ref, onToggle, isOpen, value }) => {
+const Button: FC<Props> = ({ id, listBoxId, ref }) => {
+  const { isOpen, onToggle, selectedItem } = useSelectContext();
   const { handleKeyDown } = useButtonKeyboard({ onToggle });
 
   return (
@@ -25,7 +23,7 @@ const Button: FC<Props> = ({ id, listBoxId, ref, onToggle, isOpen, value }) => {
       onClick={onToggle}
       className='flex h-9 w-48 items-center justify-between whitespace-nowrap rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background focus:outline-none focus:ring-1 disabled:cursor-not-allowed disabled:opacity-50'
     >
-      {value}
+      {selectedItem?.name || 'Select...'}
       <svg
         xmlns='http://www.w3.org/2000/svg'
         width='24'

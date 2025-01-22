@@ -2,11 +2,10 @@ import { CSSProperties, FC, ReactNode, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useVirtualizer, VirtualItem } from '@tanstack/react-virtual';
 import cn from '@/utils/cn';
+import { useSelectContext } from '../hooks';
 
 interface Props {
-  isOpen: boolean;
-  buttonRect?: DOMRect;
-  onToggle: () => void;
+  buttonElement?: HTMLButtonElement | null;
   count: number;
   children: ({
     listHeight,
@@ -17,14 +16,11 @@ interface Props {
   }) => ReactNode;
 }
 
-const Popover: FC<Props> = ({
-  isOpen,
-  buttonRect,
-  onToggle,
-  children,
-  count,
-}) => {
+const Popover: FC<Props> = ({ buttonElement, children, count }) => {
+  const { isOpen, onToggle } = useSelectContext();
+
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const buttonRect = buttonElement?.getBoundingClientRect();
 
   const rowVirtualizer = useVirtualizer({
     count,
@@ -71,10 +67,10 @@ const Popover: FC<Props> = ({
             {
               '--top': buttonRect
                 ? `${buttonRect.bottom + window.scrollY}px`
-                : '0',
+                : '0px',
               '--left': buttonRect
                 ? `${buttonRect.left + window.scrollX}px`
-                : '0',
+                : '0px',
             } as CSSProperties
           }
         >

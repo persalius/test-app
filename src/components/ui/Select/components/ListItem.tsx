@@ -5,21 +5,22 @@ import { useListItemKeyboard } from '../hooks';
 interface Props {
   height: string;
   start: string;
-  name: string;
-  handleSelect: () => void;
+  value: string;
+  onSelect: () => void;
   onToggle: () => void;
   isSelected: boolean;
 }
 
 const ListItem: FC<Props> = memo(
-  ({ name, handleSelect, onToggle, isSelected, height, start }) => {
-    const { handleKeyDown } = useListItemKeyboard({ onToggle, handleSelect });
+  ({ value, onSelect, onToggle, isSelected, height, start }) => {
+    const { handleKeyDown } = useListItemKeyboard({ onToggle, onSelect });
 
     return (
       <li
+        role='menuitem'
         onKeyDown={handleKeyDown}
         tabIndex={-1}
-        onClick={handleSelect}
+        onClick={onSelect}
         className={cn(
           'flex items-center',
           'cursor-pointer',
@@ -39,7 +40,7 @@ const ListItem: FC<Props> = memo(
           } as CSSProperties
         }
       >
-        {name}
+        {value}
       </li>
     );
   },

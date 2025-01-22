@@ -3,10 +3,10 @@ import { keys } from '../constants';
 
 interface Props {
   onToggle: () => void;
-  handleSelect: () => void;
+  onSelect: () => void;
 }
 
-export const useListItemKeyboard = ({ onToggle, handleSelect }: Props) => {
+export const useListItemKeyboard = ({ onToggle, onSelect }: Props) => {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLLIElement>) => {
       const { key, currentTarget } = e;
@@ -29,12 +29,12 @@ export const useListItemKeyboard = ({ onToggle, handleSelect }: Props) => {
         [keys.ArrowUp]: focusPrevious,
         [keys.Tab]: onToggle,
         [keys.Escape]: onToggle,
-        [keys.Enter]: handleSelect,
+        [keys.Enter]: onSelect,
       };
 
       (events as Record<string, () => void>)[key]?.();
     },
-    [onToggle, handleSelect],
+    [onToggle, onSelect],
   );
 
   return { handleKeyDown };
