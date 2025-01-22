@@ -1,10 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import type { Option } from '@/components/ui/Select/types';
-
-interface Item {
-  Name: string;
-  objectId: string;
-}
 
 export const useTestData = () => {
   const data = useQuery({
@@ -12,13 +6,6 @@ export const useTestData = () => {
     initialData: { results: [] },
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
-    select: (data: { results: Item[] }) => {
-      const results: Option[] = data.results.map((item) => ({
-        id: item.objectId,
-        name: item.Name,
-      }));
-      return { results };
-    },
     queryFn: () =>
       fetch(
         'https://parseapi.back4app.com/classes/NamesList?limit=500&keys=Name',
