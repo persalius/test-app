@@ -10,6 +10,8 @@ export const useTestData = () => {
   const data = useQuery({
     queryKey: ['testData'],
     initialData: { results: [] },
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
     select: (data: { results: Item[] }) => {
       const results: Option[] = data.results.map((item) => ({
         id: item.objectId,
