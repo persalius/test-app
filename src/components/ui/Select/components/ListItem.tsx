@@ -1,4 +1,5 @@
-import { CSSProperties, FC, memo } from 'react';
+import { memo } from 'react';
+import type { CSSProperties, FC } from 'react';
 import cn from '@/utils/cn';
 import { useListItemKeyboard } from '../hooks';
 

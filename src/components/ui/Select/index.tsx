@@ -1,6 +1,7 @@
 'use client';
 
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
+import type { FC } from 'react';
 import { useButton, useListBox, SelectContext, useContextValue } from './hooks';
 import Button from './components/Button';
 import Popover from './components/Popover';

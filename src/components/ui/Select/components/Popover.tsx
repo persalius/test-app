@@ -1,4 +1,5 @@
-import { CSSProperties, FC, ReactNode, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useVirtualizer, VirtualItem } from '@tanstack/react-virtual';
 import cn from '@/utils/cn';

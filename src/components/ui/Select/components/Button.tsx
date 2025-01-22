@@ -1,4 +1,4 @@
-import { FC, RefObject } from 'react';
+import type { FC, RefObject } from 'react';
 import { useButtonKeyboard, useSelectContext } from '../hooks';
 
 interface Props {

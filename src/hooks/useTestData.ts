@@ -1,5 +1,5 @@
-import { Option } from '@/components/ui/Select/types';
 import { useQuery } from '@tanstack/react-query';
+import type { Option } from '@/components/ui/Select/types';
 
 interface Item {
   Name: string;

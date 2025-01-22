@@ -1,6 +1,6 @@
-import { CSSProperties, FC, RefObject } from 'react';
+import type { CSSProperties, FC, RefObject } from 'react';
 import { VirtualItem } from '@tanstack/react-virtual';
-import { Option } from '../types';
+import type { Option } from '../types';
 import ListItem from './ListItem';
 import { useSelectContext } from '../hooks';
 
