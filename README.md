@@ -6,7 +6,9 @@
 4. Реалізовано тільки необхідні пропси.
 
 ## Пропозиції як можна поліпшити компонент Select:
-1. Написати компонент використовуючи архітектуру як у React-aria-components / NextUi / Shadcn
+1. Початковий список завантажувати на сервері.
+2. Завантажувати дані під час скролу в меню селекта. Таким чином немає необхідності відразу завантажувати величезний масив даних, що добре відобразиться на продуктивності.
+3. Написати компонент використовуючи архітектуру як у React-aria-components / NextUi / Shadcn
 #### Приклад:
 ```bash
 <MySelect label="Pick an engineering major" items={options}>
@@ -20,8 +22,8 @@
   <MyItem>Vanilla</MyItem>
 </MySelect>
 ```
-2. Додати всі необхідні пропси, такі як isLoading, isDisabled, isOpen, placeholder, className / classNames.
-3. Зробити можливим, щоб компонент був контрольованим. Наприклад для бібліотеки react-hook-form.
+4. Додати всі необхідні пропси, такі як isLoading, isDisabled, isOpen, placeholder, className / classNames.
+5. Зробити можливим, щоб компонент був контрольованим. Наприклад для бібліотеки react-hook-form.
 
 
 ## Getting Started
